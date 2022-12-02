@@ -8,7 +8,7 @@ public class Ingredients {
 
     public Ingredients(String name, String measurement) {
         this.name = name;
-        setMeasurement(measurement);
+        setMeasurementUnit(measurement);
     }
 
     public static Ingredients createIngredients() {
@@ -41,24 +41,45 @@ public class Ingredients {
         return measurement;
     }
 
-    public void setMeasurement(String measurement) {
-        String[] acceptableUnits = {"teaspoon", "spoon", "mg", "g"};
-        boolean match = false;
-        while (true) {
-            for (String unit: acceptableUnits) {
-                if (measurement.equals(unit)) {
-                    match = true;
+    public void setMeasurementUnit(String measurementUnit) {
+        // We prevent the outsiders from modifying the unit of our ingredient with invalid units
+        // This is how we encapsulate our data fields (make them private and provide getters/setters)
+        String[] availableUnits = {"teaspoon", "spoon", "mg", "kg"};
+        boolean matched = false;
+
+        do{
+            for (String unit: availableUnits){
+                if (measurementUnit.equals(unit)) {
+                    matched = true;
                     break;
                 }
             }
-            if (match) {
-                Scanner scan = new Scanner(System.in);
-                System.out.println("Enter your ingredient measurement unit");
-                measurement = scan.nextLine();
-            } else {
-                break;
+            if (matched)
+                this.measurement = measurementUnit;
+            else{
+                System.out.println("Error unit! Please re-enter again:");
+                Scanner scanner = new Scanner(System.in);
+                measurementUnit = scanner.nextLine();
             }
-        }
+        } while (!matched);
     }
+
+
+//        while (true) {
+//            for (String unit: acceptableUnits) {
+//                if (measurement.equals(unit)) {
+//                    match = true;
+//                    break;
+//                }
+//            }
+//            if (!match) {
+//                Scanner scan = new Scanner(System.in);
+//                System.out.println("Enter your ingredient measurement unit");
+//                this.measurement = scan.next();
+//            } else {
+//                break;
+//            }
+//        }
+
 
 }
