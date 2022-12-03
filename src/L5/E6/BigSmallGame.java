@@ -5,8 +5,6 @@ import java.util.Scanner;
 
 public class BigSmallGame {
    public static void main(String[] args) {
-      final int PLAYER_WALLET_START = 100;
-      final int HOUSE_WALLET_START = 1000;
 
       Player player = new Player(100);
       House house = new House(1000);
@@ -28,6 +26,10 @@ public class BigSmallGame {
             System.out.println("You won $" + player.getBet());
             player.addWallet(player.getBet());
             house.addWallet(-player.getBet());
+         } else {
+            System.out.println("You lost $" + player.getBet());
+            house.addWallet(player.getBet());
+            player.addWallet(-player.getBet());
          }
 
          System.out.println("The player has $" + player.getWallet());
@@ -41,8 +43,11 @@ public class BigSmallGame {
             System.out.println("Do you want to play again? (y/n)");
             if (Objects.equals(playScanner.nextLine(), "n")) {
                break;
+            } else {
+               round += 1;
             }
          }
       }
+
    }
 }

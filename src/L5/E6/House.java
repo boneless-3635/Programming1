@@ -4,11 +4,14 @@ public class House {
     private static final byte MIN_SMALL = 4;
     private static final byte MAX_SMALL = 11;
     private int wallet;
-    private Dice[] dices;
+    private final Dice[] dices;
 
     public House(int wallet) {
         this.wallet = wallet;
         this.dices = new Dice[3];
+        for (int i = 0; i < 3; i++) {
+            dices[i] = new Dice();
+        }
     }
 
     public void rollDices() {
