@@ -13,6 +13,14 @@ public class Cylinder extends Circle {
     }
 
     public double getVolume() {
-        return 
+        return super.getArea() * this.height;
+    }
+
+    public double getArea() {
+        return 2 * Math.PI * super.getRadius() * this.height + 2 * super.getArea();
+    }
+
+    public String toString() {
+        return String.format("Cylinder[radius=%s, height=%s]", super.getRadius(), this.height);
     }
 }
