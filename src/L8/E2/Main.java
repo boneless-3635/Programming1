@@ -15,6 +15,7 @@ public class Main {
 
         while (fileScanner.hasNext()) {
             String line = fileScanner.nextLine();
+//            read per line of csv file
             StringTokenizer reader = new StringTokenizer(line, ",");
 //            separate data using "," as a delimiter
 
@@ -29,8 +30,8 @@ public class Main {
 
             System.out.printf("%s lives at %s and is %s years old\n", name, address, age);
         }
-        double avgAge = totalAge / counter;
-        System.out.println("The Average age is " + avgAge);
+        System.out.println("The Average age is " + totalAge / counter);
+//        calculate and output average age
 
         fileScanner.close();
     }
