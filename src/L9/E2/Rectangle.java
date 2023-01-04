@@ -14,7 +14,7 @@ public class Rectangle extends Shape{
         this.length = length;
     }
 
-    public Rectangle(String color, Boolean filled, double width, double length) {
+    public Rectangle(double width, double length, String color, Boolean filled) {
         super(color, filled);
         this.width = width;
         this.length = length;
